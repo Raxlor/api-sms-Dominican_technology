@@ -1,64 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://panel.dominicantechnology.com/assets/images/logo-dark3.png" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Desarrollador por Dominican Technology
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Nombre del Proyecto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Descripción del proyecto.
 
-## Learning Laravel
+## Requisitos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.1 o superior
+- Laravel Framework 10.x
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instalación
 
-## Laravel Sponsors
+1. Clona el repositorio: `git clone https://github.com/Raxlor/api-sms-Dominican_technolog`
+2. Instala las dependencias: `composer install`
+3. Configura el archivo .env con la información de tu base de datos y otros ajustes necesarios.
+4. Ejecuta las migraciones: `php artisan migrate`
+5. Genera una clave de aplicación: `php artisan key:generate`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Configuración
 
-### Premium Partners
+Antes de utilizar la API, asegúrate de configurar los siguientes parámetros en el archivo .env:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- `URI_SMS_API`: URL de la API de mensajes SMS.
+- `Authorization_SMS_API`: Token de autorización para acceder a la API de mensajes SMS.
+- `ApiKey_SMS_API`: Clave API para la API de mensajes SMS.
+- `country_SMS_API`: País aceptado para los números telefónicos (ejemplo: DO para República Dominicana).
+- `tag_SMS_API`: Etiqueta para los mensajes enviados a través de la API.
 
-## Contributing
+## Uso
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### POST /sms
 
-## Code of Conduct
+Enviar un mensaje de texto.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**Parámetros:**
+- `numero` (string, requerido): Número de teléfono del destinatario (sin guiones, formato: xxxxxxxxxx).
+- `sms` (string, requerido): Contenido del mensaje de texto.
 
-## Security Vulnerabilities
+**Respuestas:**
+- 200 OK: Envío exitoso. Retorna un objeto JSON con la siguiente estructura:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+{
+"mensaje": "envío exitoso",
+"caracteres": [cantidad de caracteres],
+"coste_envio": [cantidad a restar del saldo]
+}
+- 401 Unauthorized: Faltan campos obligatorios: número y mensaje a enviar.
+- 402 Payment Required: Saldo insuficiente para enviar el mensaje.
+- 403 Forbidden: Acceso denegado debido a la IP no autorizada.
+- 500 Internal Server Error: Error en la solicitud.
 
-## License
+### POST /balance
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Consultar saldo disponible.
+
+**Respuesta:**
+- 200 OK: Retorna un objeto JSON con el siguiente formato:
+{
+"SMS_DISPONIBLES": [saldo disponible]
+}
+
+### POST /historial
+
+Consultar historial de envíos.
+
+**Respuesta:**
+- 200 OK: Retorna un objeto JSON con los registros de envíos realizados.
+
+## Licencia
+
+Este software y su API son propiedad de [DOMINICAN TECHNOLOGY]. Fueron creados para ser utilizados exclusivamente en el contexto del sistema [PRESTASYS DOMINICANA]. El uso no autorizado de este software y su API está estrictamente prohibido y puede tener consecuencias legales y penales.
+
+Consulta la licencia completa [aquí](enlace-a-la-licencia).
+
+## Contacto
+
+Para cualquier consulta o solicitud de permisos, ponte en contacto con nosotros en [dirección de correo electrónico].
+
+
+  
+## Rutas de API
+
+| Ruta                | Método | Descripción                       | Inputs Requeridos  | Tipo de Dato       | Longitud Máxima    | Autenticación      |
+|---------------------|--------|-----------------------------------|--------------------|--------------------|--------------------|--------------------|
+| /sms                | POST   | Enviar un mensaje de texto         | numero, sms        | string             | 264                | Bearer token       |
+| /balance            | POST   | Obtener el saldo disponible        | -                  | -                  | -                  | Bearer token       |
+| /historial          | POST   | Obtener el historial de envíos     | -                  | -                  | -                  | Bearer token       |
+
+**Nota:** Para el campo "numero" en la ruta `/sms`, se espera un número de teléfono válido en formato de República Dominicana (DO) sin guiones y con una longitud máxima de 10 dígitos.
+
