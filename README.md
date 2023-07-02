@@ -60,9 +60,9 @@ Consultar saldo disponible.
 
 **Respuesta:**
 - 200 OK: Retorna un objeto JSON con el siguiente formato:
-{
-"SMS_DISPONIBLES": [saldo disponible]
-}
+- {
+-"SMS_DISPONIBLES": [saldo disponible]
+-}
 
 ### POST /historial
 
