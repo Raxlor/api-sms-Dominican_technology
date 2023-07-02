@@ -1,5 +1,4 @@
-<p align="center"><a href="https://dominicantechnology.com" target="_blank"><img src="![PRESTASYSRas](https://github.com/Raxlor/api-sms-Dominican_technology/assets/69202062/f8ee45bf-6c19-4200-a2b4-ca7296064f78)
-" width="400"></a></p>
+<p align="center"><a href="https://dominicantechnology.com" target="_blank"><img src="https://panel.dominicantechnology.com/assets/images/logo-dark3.png" width="400"></a></p>
 
 
 
@@ -44,13 +43,13 @@ Enviar un mensaje de texto.
 
 **Respuestas:**
 - 200 OK: Envío exitoso. Retorna un objeto JSON con la siguiente estructura:
-
+```json
 {
-"mensaje": "envío exitoso",
-"caracteres": [cantidad de caracteres],
-"coste_envio": [cantidad a restar del saldo]
+    "mensaje": "envío exitoso",
+    "caracteres": ["cantidad de caracteres"],
+    "coste_envio": ["cantidad a restar del saldo"]
 }
-
+```
 - 401 Unauthorized: Faltan campos obligatorios: número y mensaje a enviar.
 - 402 Payment Required: Saldo insuficiente para enviar el mensaje.
 - 403 Forbidden: Acceso denegado debido a la IP no autorizada.
@@ -62,9 +61,11 @@ Consultar saldo disponible.
 
 **Respuesta:**
 - 200 OK: Retorna un objeto JSON con el siguiente formato:
-- {
-"SMS_DISPONIBLES": [saldo disponible]
+```json
+{
+    "SMS_DISPONIBLES": ["saldo disponible"]
 }
+```
 
 ### POST /historial
 
