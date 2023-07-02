@@ -1,12 +1,12 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://panel.dominicantechnology.com/assets/images/logo-dark3.png" width="400"></a></p>
+<p align="center"><a href="https://dominicantechnology.com" target="_blank"><img src="https://panel.dominicantechnology.com/assets/images/logo-dark3.png" width="400"></a></p>
 
 
 
 ## Desarrollador por Dominican Technology
 
-# Nombre del Proyecto
+# API DE ENVIO SMS 
 
-Descripción del proyecto.
+Proyecto creado para facilitar la distribución de notificaciones en sistemas financieros, tanto en notificaciones como en solicitudes de información manual o automáticas.
 
 ## Requisitos
 
