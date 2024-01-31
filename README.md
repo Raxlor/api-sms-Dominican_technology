@@ -1,4 +1,4 @@
-<p align="center"><a href="https://dominicantechnology.com" target="_blank"><img src="https://panel.dominicantechnology.com/assets/images/logo-dark3.png" width="400"></a></p>
+<p align="center"><a href="https://dominicantechnology.com" target="_blank"><img src="https://api.prestasys.com.do/public/images/PRESTASYSRas.png" width="400"></a></p>
 
 
 
